@@ -8,7 +8,7 @@ This repo stems from the [biothings-data-parser-sample](https://github.com/Telen
 {
     "_id": "chr10:g.1046704_1046704",
     "primate_ai": {
-        "chrom": 10,
+        "chrom": "10",
         "pos": 1046704,
         "ref": "C",
         "alt": "T",
