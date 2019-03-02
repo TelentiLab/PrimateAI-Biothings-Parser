@@ -8,6 +8,7 @@
         "uncompress" : true
     },
     "uploader" : {
-        "parser" : "parser:load_data"
+        "parser" : "parser:load_data",
+        "on_duplicates" : "merge"
     }
 }
