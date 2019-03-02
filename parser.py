@@ -9,7 +9,7 @@ _logger = logging.getLogger('biothings_parser')
 
 # change following parameters accordingly
 SOURCE_NAME = 'primate_ai'  # source name that appears in the api response
-FILENAME = 'sample_data.tsv'  # name of the file to read
+FILENAME = 'PrimateAI_scores_v0.2.tsv'  # name of the file to read
 DELIMITER = '\t'  # the delimiter that separates each field
 
 

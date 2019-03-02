@@ -4,7 +4,7 @@
         "url" : "https://omni.telentilab.com/primate_ai"
     },
     "dumper" : {
-        "data_url" : "http://localhost:8080/data/sample_data.tsv.gz",
+        "data_url" : "http://localhost:8080/data/PrimateAI_scores_v0.2.tsv.gz",
         "uncompress" : true
     },
     "uploader" : {
