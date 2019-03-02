@@ -70,7 +70,7 @@ def load_data(data_folder: str):
                 skipped.append(line)
                 continue  # skip error line
 
-            _id = f'chr{chrom}:g.{pos}_{pos}'  # define id
+            _id = f'chr{chrom}:g.{pos}{ref}>{alt}'  # define id
 
             variant = {
                 'chrom': chrom,

@@ -6,7 +6,7 @@ This repo stems from the [biothings-data-parser-sample](https://github.com/Telen
 
 ```json
 {
-    "_id": "chr10:g.1046704_1046704",
+    "_id": "chr10:g.1046704C>T",
     "primate_ai": {
         "chrom": "10",
         "pos": 1046704,
