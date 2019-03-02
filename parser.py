@@ -1,16 +1,16 @@
 import logging
 import os
 
-FILE_NOT_FOUND_ERROR = 'Cannot find input file: {}'   # error message constant
+FILE_NOT_FOUND_ERROR = 'Cannot find input file: {}'  # error message constant
 
 # configure logger
 logging.basicConfig(format='%(asctime)s %(levelname)-8s [%(filename)s:%(lineno)d] %(message)s', level=logging.INFO)
 _logger = logging.getLogger('biothings_parser')
 
 # change following parameters accordingly
-SOURCE_NAME = 'my_data_source'   # source name that appears in the api response
-FILENAME = 'sample_data.tsv'   # name of the file to read
-DELIMITER = '\t'    # the delimiter that separates each field
+SOURCE_NAME = 'primate_ai'  # source name that appears in the api response
+FILENAME = 'sample_data.tsv'  # name of the file to read
+DELIMITER = '\t'  # the delimiter that separates each field
 
 
 def _inspect_file(filename: str) -> int:
@@ -51,30 +51,39 @@ def load_data(data_folder: str):
                 continue  # skip commented/empty lines
 
             try:
-                chrom, start, end, percentile = line.strip().split(DELIMITER)   # unpack according to schema
+                (chrom, pos, ref, alt, ref_aa, alt_aa, strand_1pos_0neg, trinucleotide_context, ucsc_gene,
+                 exac_coverage, primate_dl_score) = line.strip().split(DELIMITER)  # unpack according to schema
             except ValueError:
                 _logger.error(f'failed to unpack line {count}: {line}')
                 _logger.error(f'got: {line.strip().split(DELIMITER)}')
                 skipped.append(line)
                 continue  # skip error line
 
-            try:    # parse each field if necessary (format, enforce datatype etc.)
+            try:  # parse each field if necessary (format, enforce datatype etc.)
                 chrom = chrom.replace('chr', '')
-                start = int(start)
-                end = int(end)
-                percentile = float(percentile)
+                pos = int(pos)
+                strand_1pos_0neg = bool(strand_1pos_0neg)
+                exac_coverage = float(exac_coverage)
+                primate_dl_score = float(primate_dl_score)
             except ValueError as e:
                 _logger.error(f'failed to cast type for line {count}: {e}')
                 skipped.append(line)
                 continue  # skip error line
 
-            _id = f'chr{chrom}:g.{start}_{end}'  # define id
+            _id = f'chr{chrom}:g.{pos}_{pos}'  # define id
 
             variant = {
                 'chrom': chrom,
-                'start': start,
-                'end': end,
-                'percentile': percentile,
+                'pos': pos,
+                'ref': ref,
+                'alt': alt,
+                'ref_aa': ref_aa,
+                'alt_aa': alt_aa,
+                'pos_strand': strand_1pos_0neg,
+                'trinucleotide_context': trinucleotide_context,
+                'ucsc_gene': ucsc_gene,
+                'exac_coverage': exac_coverage,
+                'primate_dl_score': primate_dl_score,
             }
 
             yield {  # commit an entry by yielding

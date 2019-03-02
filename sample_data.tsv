@@ -1,8 +1,28 @@
-# chrom start   end score
-1	101	102	11.4
-1	103	104	12.9
-1	116	117	15.4
-1	146	147	11.6
-1	165	167	18.14
-1	168	170	91.2
-1	183	197	21.29
+# Copyright 2018 Illumina Inc, San Diego, CA
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# For research use only.
+#
+
+chr	pos	ref	alt	refAA	altAA	strand_1pos_0neg	trinucleotide_context	UCSC_gene	ExAC_coverage	primateDL_score
+chr10	1000764	C	T	R	C	1	CCG	uc001ift.3	45.49	0.849114537239
+chr10	1000764	C	G	R	G	1	CCG	uc001ift.3	45.49	0.795686006546
+chr10	1000764	C	A	R	S	1	CCG	uc001ift.3	45.49	0.805917859077
+chr10	1000765	G	A	R	H	1	CGT	uc001ift.3	45.67	0.816213965416
+chr10	1000765	G	C	R	P	1	CGT	uc001ift.3	45.67	0.822309494019
+chr10	1000765	G	T	R	L	1	CGT	uc001ift.3	45.67	0.811780273914
+chr10	5903128	C	T	P	L	1	CCG	uc001iit.4	55.41	0.326553106308
+chr10	5903128	C	G	P	R	1	CCG	uc001iit.4	55.41	0.331914424896
+chr10	5903128	C	A	P	Q	1	CCG	uc001iit.4	55.41	0.289144158363
+chr10	5903127	C	T	P	S	1	TCC	uc001iit.4	55.49	0.282878279686
+chr10	5903127	C	A	P	T	1	TCC	uc001iit.4	55.49	0.304850786924
+chr10	5903127	C	G	P	A	1	TCC	uc001iit.4	55.49	0.290767997503
+chr10	15103337	C	T	P	L	1	CCG	uc001inx.5	54.99	0.531383156776
+chr10	15103337	C	G	P	R	1	CCG	uc001inx.5	54.99	0.527225375175
+chr10	15103337	C	A	P	Q	1	CCG	uc001inx.5	54.99	0.485289603472
+chr10	15103336	C	G	P	A	1	ACC	uc001inx.5	54.77	0.480423629284

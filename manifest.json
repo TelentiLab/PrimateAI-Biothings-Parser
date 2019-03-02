@@ -1,7 +1,7 @@
 {
     "version": "0.2",
     "__metadata__" : {
-        "url" : "https://yoursite.com"
+        "url" : "https://omni.telentilab.com/primate_ai"
     },
     "dumper" : {
         "data_url" : "http://localhost:8080/data/sample_data.tsv.gz",
