@@ -62,7 +62,7 @@ def load_data(data_folder: str):
             try:  # parse each field if necessary (format, enforce datatype etc.)
                 chrom = chrom.replace('chr', '')
                 pos = int(pos)
-                strand_1pos_0neg = bool(strand_1pos_0neg)
+                strand_1pos_0neg = bool(int(strand_1pos_0neg))
                 exac_coverage = float(exac_coverage)
                 primate_dl_score = float(primate_dl_score)
             except ValueError as e:
