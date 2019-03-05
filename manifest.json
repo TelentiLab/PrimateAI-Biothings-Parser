@@ -1,7 +1,7 @@
 {
     "version": "0.2",
     "__metadata__" : {
-        "url" : "https://omni.telentilab.com/primate_ai"
+        "url" : "https://www.nature.com/articles/s41588-018-0294-6"
     },
     "dumper" : {
         "data_url" : "http://localhost:8080/data/PrimateAI_scores_v0.2.tsv.gz",
