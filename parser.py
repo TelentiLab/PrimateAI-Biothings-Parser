@@ -1,11 +1,13 @@
 import logging
 import os
+import datetime
+import time
 
 FILE_NOT_FOUND_ERROR = 'Cannot find input file: {}'  # error message constant
 
 # configure logger
 logging.basicConfig(format='%(asctime)s %(levelname)-8s [%(filename)s:%(lineno)d] %(message)s', level=logging.INFO)
-_logger = logging.getLogger('biothings_parser')
+_logger = logging.getLogger('PrimateAI-parser')
 
 # change following parameters accordingly
 SOURCE_NAME = 'primate_ai'  # source name that appears in the api response
@@ -42,9 +44,13 @@ def load_data(data_folder: str):
         _logger.info(f'start reading file: {FILENAME}')
         count = 0
         skipped = []
+        start_time = time.time()
         for line in file:
             count += 1
-            _logger.info(f'reading line {count} ({(count / file_lines * 100):.2f}%)')  # format to use 2 decimals
+            ratio = count / file_lines
+            time_left = datetime.timedelta(seconds=(time.time() - start_time) * (1 - ratio) / ratio)
+            # format to use 2 decimals for progress
+            _logger.info(f'reading line {count} ({(count / file_lines * 100):.2f}%), estimated time left: {time_left}')
 
             if line.startswith('#') or line.strip() == '':
                 skipped.append(line)
@@ -72,18 +78,27 @@ def load_data(data_folder: str):
 
             _id = f'chr{chrom}:g.{pos}{ref}>{alt}'  # define id
 
+            """
+            Create an array of scores and put the current score as one entry in the array. Since same position may 
+            result in different scores. For more information, see GitHug issue:
+            https://github.com/TelentiLab/PrimateAI-Biothings-Parser/issues/1
+            """
             variant = {
                 'chrom': chrom,
                 'pos': pos,
                 'ref': ref,
                 'alt': alt,
-                'ref_aa': ref_aa,
-                'alt_aa': alt_aa,
-                'pos_strand': strand_1pos_0neg,
-                'trinucleotide_context': trinucleotide_context,
-                'ucsc_gene': ucsc_gene,
-                'exac_coverage': exac_coverage,
-                'primate_dl_score': primate_dl_score,
+                'scores': [
+                    {
+                        'ref_aa': ref_aa,
+                        'alt_aa': alt_aa,
+                        'pos_strand': strand_1pos_0neg,
+                        'trinucleotide_context': trinucleotide_context,
+                        'ucsc_gene': ucsc_gene,
+                        'exac_coverage': exac_coverage,
+                        'primate_dl_score': primate_dl_score,
+                    }
+                ],
             }
 
             yield {  # commit an entry by yielding
