@@ -15,6 +15,10 @@ FILENAME = 'PrimateAI_scores_v0.2.tsv'  # name of the file to read
 DELIMITER = '\t'  # the delimiter that separates each field
 
 
+def version(self):
+    return 'v1.0'
+
+
 def _inspect_file(filename: str) -> int:
     i = 0
     with open(filename) as f:
