@@ -16,7 +16,7 @@ DELIMITER = '\t'  # the delimiter that separates each field
 
 
 def version(self):
-    return 'v1.0'
+    return 'v0.2'
 
 
 def _inspect_file(filename: str) -> int:
